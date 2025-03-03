@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { fetchData } from '@services/ApiServices';
 import PropTypes from 'prop-types';
-import { getHeroesUrl, getHeroDetailUrl } from '@services/SiteConfig';
+import { getHeroesUrl, getHeroDetailUrl, getHeroComicsUrl } from '@services/SiteConfig';
 
 export const HeroesContext = createContext();
 
@@ -52,17 +52,25 @@ export const HeroesProvider = ({ children }) => {
     }
   }, []);
 
-  //Función para obtener los detalles de un heroe específico por su id
-  const searchHeroById = async (heroeId) => {
+  // Función para obtener los cómics de un héroe por su id
+  const fetchHeroComics = async (heroId) => {
     try {
       setLoading(true);
-      const heroDetail = activeHero || (await fetchHeroes());
-      const selectedHero = heroDetail.find(
-        (hero) => hero.id.attributes['im:id'] === heroeId
-      );
-      return selectedHero;
+      const url = getHeroComicsUrl(heroId);
+      const data = await fetchData(url);
+      //variable comics para ordenar los comics por fecha de lanzamiento
+      const comics = data.data.results;
+
+      comics?.sort((a, b) => {
+        const dateA = new Date(a.dates.find(date => date.type === 'onsaleDate').date);
+        const dateB = new Date(b.dates.find(date => date.type === 'onsaleDate').date);
+        return dateA - dateB;
+      });
+
+      return comics;
     } catch (err) {
-      setError('Failed to load hero detail by id: ', err);
+      setError('Failed to fetch hero comics:', err);
+      return [];
     } finally {
       setLoading(false);
     }
@@ -144,7 +152,7 @@ export const HeroesProvider = ({ children }) => {
         activeHero,
         selectHero,
         fetchHeroDetail,
-        searchHeroById,
+        fetchHeroComics,
         toggleFavoriteHero,
         favoriteHeroes,
         filterFavoriteHeroes,
