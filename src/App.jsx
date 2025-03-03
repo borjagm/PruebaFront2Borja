@@ -10,7 +10,9 @@ function App() {
     <div className="app">
       <HeroesProvider>
         <Header />
-        <AppRoutes />
+        <div className="app-content">
+          <AppRoutes />
+        </div>
       </HeroesProvider>
     </div>
   );

@@ -1,0 +1,33 @@
+.searcher-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-top: 12px;
+  }
+  
+  .searcher-input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    color: #000;
+    flex: 1;
+  
+    &::placeholder {
+      color: #888;
+    }
+  }
+  
+  .searcher-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: #000;
+  }
+
+  .searcher-results-count {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+  }
