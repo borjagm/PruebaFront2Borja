@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from '@pages/Home/Home';
-import CharacterDetail from '@pages/CharacterDetail/CharacterDetail';
+
+const Home = lazy(() => import('@pages/Home/Home'));
+const CharacterDetail = lazy(
+  () => import('@pages/CharacterDetail/CharacterDetail')
+);
 
 function AppRoutes() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/character/:id" element={<CharacterDetail />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/character/:id" element={<CharacterDetail />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
