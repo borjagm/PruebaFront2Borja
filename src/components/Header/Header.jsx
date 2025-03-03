@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import MarvelLogo from '@assets/marvel-logo.png';
 import FavIcon from '@assets/fav-selected.svg';
-import { HeroesContext } from '@context/HeroesContext';
+import { HeroesContext } from '@context/HeroesContext.jsx';
 
 import './index.scss';
 
-
 export default function Header() {
-  const { favoriteHeroes, toggleShowFavorites, clearFavoriteFilter } = useContext(HeroesContext);
+  const { favoriteHeroes, toggleShowFavorites, clearFavoriteFilter } =
+    useContext(HeroesContext);
   const favoriteCount = favoriteHeroes?.length;
 
   // Función para que no busque héroes favoritos si no hay ninguno
@@ -15,11 +15,16 @@ export default function Header() {
     if (favoriteCount > 0) {
       toggleShowFavorites();
     }
-  }
+  };
 
   return (
     <header className="header">
-      <img src={MarvelLogo} alt="Marvel logo" className="header__logo" onClick={clearFavoriteFilter}/>
+      <img
+        src={MarvelLogo}
+        alt="Marvel logo"
+        className="header__logo"
+        onClick={clearFavoriteFilter}
+      />
       <div className="header__favorites" onClick={handleToggleFavorites}>
         <img
           src={FavIcon}

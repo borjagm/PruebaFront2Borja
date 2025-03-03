@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { HeroesContext } from '@context/HeroesContext';
+import { HeroesContext } from '@context/HeroesContext.jsx';
 import FavSelected from '@assets/fav-selected.svg';
 import FavUnselected from '@assets/fav-unselected.svg';
 
@@ -25,7 +25,7 @@ const CharacterDetail = () => {
   }, [character.id]);
 
   const getOnSaleYear = (dates) => {
-    const onSaleDate = dates.find(date => date.type === 'onsaleDate');
+    const onSaleDate = dates.find((date) => date.type === 'onsaleDate');
     return onSaleDate ? new Date(onSaleDate.date).getFullYear() : 'N/A';
   };
 
@@ -67,8 +67,12 @@ const CharacterDetail = () => {
                 alt={comic.title}
                 width={100}
               />
-              <p className='character-detail__comics__list__item__title'>{comic.title}</p>
-              <p className='character-detail__comics__list__item__year'>{getOnSaleYear(comic.dates)}</p>
+              <p className="character-detail__comics__list__item__title">
+                {comic.title}
+              </p>
+              <p className="character-detail__comics__list__item__year">
+                {getOnSaleYear(comic.dates)}
+              </p>
             </li>
           ))}
         </ul>

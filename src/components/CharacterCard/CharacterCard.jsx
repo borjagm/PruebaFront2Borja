@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 import FavIconSelected from '@assets/fav-selected.svg';
 import FavIconUnselected from '@assets/fav-unselected.svg';
-import { HeroesContext } from '@context/HeroesContext';
+import { HeroesContext } from '@context/HeroesContext.jsx';
 
 import './index.scss';
 
@@ -16,7 +16,7 @@ const CharacterCard = ({ character }) => {
   // Función que se ejecuta al hacer click en la card
   const handleCardClick = () => {
     navigate(`/character/${character.id}`, { state: { character } });
-  }
+  };
 
   return (
     <div className="character-card" onClick={handleCardClick}>
@@ -33,13 +33,18 @@ const CharacterCard = ({ character }) => {
             {character.name?.toUpperCase()}
           </h2>
           {/* Añadimos la stopPropagation para evitar que el evento llegue al padre */}
-          <div className="character-card__favorites" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="character-card__favorites"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
-              src={isFavorite ? FavIconSelected: FavIconUnselected}
+              src={isFavorite ? FavIconSelected : FavIconUnselected}
               alt="Favorite icon"
               className="card__favorites-icon"
               width={12}
-              onClick={() => {toggleFavoriteHero(character)}}
+              onClick={() => {
+                toggleFavoriteHero(character);
+              }}
             />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { HeroesContext } from '@context/HeroesContext';
+import { HeroesContext } from '@context/HeroesContext.jsx';
 import CharacterCard from '@components/CharacterCard/CharacterCard';
 
 import './index.scss';
@@ -12,7 +12,7 @@ function Home() {
 
   const handleSearch = (search) => {
     setSearchHero(search);
-  }
+  };
 
   const displayedHeroes = showFavorites ? filterFavoriteHeroes() : heroes;
 
@@ -24,8 +24,11 @@ function Home() {
 
   return (
     <div className="home">
-      <div className='home-searcher'>
-        <Searcher onSearch={handleSearch} resultsCount={filteredHeroes.length}/>
+      <div className="home-searcher">
+        <Searcher
+          onSearch={handleSearch}
+          resultsCount={filteredHeroes.length}
+        />
       </div>
       <div className="hero-cards-container">
         {filteredHeroes.map((hero) => (
