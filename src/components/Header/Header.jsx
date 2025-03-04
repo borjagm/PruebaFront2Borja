@@ -7,8 +7,12 @@ import { HeroesContext } from '@context/HeroesContext.jsx';
 import './index.scss';
 
 export default function Header() {
-  const { favoriteHeroes, toggleShowFavorites, clearFavoriteFilter, showFavorites } =
-    useContext(HeroesContext);
+  const {
+    favoriteHeroes,
+    toggleShowFavorites,
+    clearFavoriteFilter,
+    showFavorites,
+  } = useContext(HeroesContext);
   const favoriteCount = favoriteHeroes?.length;
   const location = useLocation();
   const navigate = useNavigate();

@@ -13,10 +13,10 @@ function AppRoutes() {
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <div className="app-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/character/:id" element={<CharacterDetail />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/character/:id" element={<CharacterDetail />} />
+          </Routes>
         </div>
       </Suspense>
     </Router>
