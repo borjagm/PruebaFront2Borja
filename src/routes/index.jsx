@@ -1,3 +1,4 @@
+import Header from '@components/Header/Header';
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -9,11 +10,14 @@ const CharacterDetail = lazy(
 function AppRoutes() {
   return (
     <Router>
+      <Header />
       <Suspense fallback={<div>Loading...</div>}>
+        <div className="app-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/character/:id" element={<CharacterDetail />} />
         </Routes>
+        </div>
       </Suspense>
     </Router>
   );
