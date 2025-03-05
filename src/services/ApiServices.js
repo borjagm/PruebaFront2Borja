@@ -9,7 +9,7 @@ export const fetchData = async (url) => {
   try {
     const response = await axios.get(url);
 
-    // Verificar y parsear el contenido JSON devuelto
+    // Verificar el contenido JSON devuelto
     if (response.data) {
       return response.data;
     }
