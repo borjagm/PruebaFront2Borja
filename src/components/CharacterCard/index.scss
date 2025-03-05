@@ -12,7 +12,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
 }
 
 .character-card__image {
@@ -76,5 +82,5 @@
 }
 
 .character-card:hover .card__favorites-icon {
-    filter: brightness(0) invert(1);
-  }
+  filter: brightness(0) invert(1);
+}

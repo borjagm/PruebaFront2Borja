@@ -32,3 +32,6 @@ export const getHeroesUrl = (limit = 20, offset = 0) =>
 
 export const getHeroDetailUrl = (heroId) =>
   `${MARVEL_API_BASE_URL}/characters/${heroId}?${getAuthParams()}`;
+
+export const getHeroComicsUrl = (heroId, limit = 20) =>
+  `${MARVEL_API_BASE_URL}/characters/${heroId}/comics?${getAuthParams()}&limit=${limit}&orderBy=onsaleDate`;
