@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { HeroesContext } from '@context/HeroesContext.jsx';
 import CharacterCard from '@components/CharacterCard/CharacterCard';
+import Searcher from './components/Searcher/Searcher';
 
 import './index.scss';
-import Searcher from './components/Searcher/Searcher';
 
 function Home() {
   const { heroes, filterFavoriteHeroes, showFavorites } =

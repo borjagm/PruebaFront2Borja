@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { HeroesContext } from '@context/HeroesContext.jsx';
 import FavSelected from '@assets/fav-selected.svg';
 import FavUnselected from '@assets/fav-unselected.svg';
+import { Comics } from './components/Comics/Comics';
 
 import './index.scss';
 
@@ -23,11 +24,6 @@ const CharacterDetail = () => {
 
     getComics();
   }, [character.id]);
-
-  const getOnSaleYear = (dates) => {
-    const onSaleDate = dates.find((date) => date.type === 'onsaleDate');
-    return onSaleDate ? new Date(onSaleDate.date).getFullYear() : 'N/A';
-  };
 
   return (
     <div className="character-detail">
@@ -57,26 +53,7 @@ const CharacterDetail = () => {
           </p>
         </div>
       </div>
-      <div className="character-detail__comics">
-        <p className="character-detail__comics__title">COMICS</p>
-        <ul className="character-detail__comics__list">
-          {comics.map((comic) => (
-            <li key={comic.id} className="character-detail__comics__list__item">
-              <img
-                src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                alt={comic.title}
-                width={100}
-              />
-              <p className="character-detail__comics__list__item__title">
-                {comic.title}
-              </p>
-              <p className="character-detail__comics__list__item__year">
-                {getOnSaleYear(comic.dates)}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Comics comics={comics} />
     </div>
   );
 };
