@@ -6,7 +6,9 @@ import { describe, expect, test, vi } from 'vitest';
 describe('Searcher Component', () => {
   test('renders Searcher component', () => {
     render(<Searcher onSearch={() => {}} resultsCount={0} />);
-    expect(screen.getByPlaceholderText('SEARCH A CHARACTER')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('SEARCH A CHARACTER')
+    ).toBeInTheDocument();
     expect(screen.getByAltText('search icon')).toBeInTheDocument();
   });
 

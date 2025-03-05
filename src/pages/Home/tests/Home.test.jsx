@@ -7,8 +7,8 @@ import { HeroesContext } from '@context/HeroesContext.jsx';
 
 //Mockeo el componente CharacterCard para que no me de problemas el navigate con el router
 vi.mock('@components/CharacterCard/CharacterCard', () => ({
-    __esModule: true,
-    default: ({ character }) => <div>{character.name}</div>,
+  __esModule: true,
+  default: ({ character }) => <div>{character.name}</div>,
 }));
 
 describe('Componente Home', () => {
