@@ -1,0 +1,44 @@
+@use './_variables' as vars;
+@use './_mixins';
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: vars.$primary-color;
+  color: vars.$text-color;
+  max-width: 100%;
+  margin: 0;
+  padding: 0px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 84px;
+  padding: 0 48px;
+  background-color: vars.$header-background-color;
+  box-sizing: border-box;
+}
+
+.home {
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+// Padding para la versión móvil
+@media (max-width: 768px) {
+  body {
+    padding: 0px;
+  }
+
+  .header {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .home {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+}

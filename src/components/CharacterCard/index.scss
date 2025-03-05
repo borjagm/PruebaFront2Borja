@@ -1,0 +1,86 @@
+@use '../../styles/main.scss' as *;
+@use '../../styles/_variables' as vars;
+
+.character-card {
+  width: 188.57px;
+  height: 245.97px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: vars.$spacing-xsmall;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+}
+
+.character-card__image {
+  width: 100%;
+  min-height: 189.97px;
+  height: 189.97px;
+  object-fit: cover;
+}
+
+.character-card__line {
+  width: 100%;
+  height: vars.$spacing-small;
+  background-color: vars.$marvel-red;
+  transition: height 0.3s ease;
+
+  position: absolute;
+  z-index: 1;
+}
+
+.character-card__info {
+  width: 100%;
+  height: 100%;
+  background-color: vars.$header-background-color;
+  z-index: 2;
+  position: relative;
+}
+
+.character-card__description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: vars.$spacing-medium;
+}
+
+.character-card__name {
+  font-size: 1.2em;
+  margin: 0;
+  color: vars.$primary-color;
+  position: relative;
+  z-index: 3;
+  text-align: left;
+  margin-left: vars.$spacing-medium;
+  font-family: vars.$primary-font;
+  font-size: vars.$font-size-small;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.character-card__favorites {
+  margin-left: vars.$spacing-medium;
+  margin-right: vars.$spacing-medium;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.character-card:hover .character-card__line {
+  height: 100%;
+}
+
+.character-card:hover .card__favorites-icon {
+  filter: brightness(0) invert(1);
+}

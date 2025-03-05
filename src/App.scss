@@ -1,0 +1,13 @@
+@use './styles/main.scss';
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
