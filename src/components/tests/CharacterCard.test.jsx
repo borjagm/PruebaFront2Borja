@@ -47,7 +47,9 @@ describe('CharacterCard', () => {
     renderComponent(mockCharacter);
 
     expect(screen.getByAltText(mockCharacter.name)).toBeInTheDocument();
-    expect(screen.getByText(mockCharacter.name.toUpperCase())).toBeInTheDocument();
+    expect(
+      screen.getByText(mockCharacter.name.toUpperCase())
+    ).toBeInTheDocument();
   });
 
   test('Navega a la página de detalles del personaje al hacer clic en la card', () => {
@@ -58,7 +60,10 @@ describe('CharacterCard', () => {
 
     fireEvent.click(screen.getByText(mockCharacter.name.toUpperCase()));
 
-    expect(mockNavigate).toHaveBeenCalledWith(`/character/${mockCharacter.id}`, { state: { character: mockCharacter } });
+    expect(mockNavigate).toHaveBeenCalledWith(
+      `/character/${mockCharacter.id}`,
+      { state: { character: mockCharacter } }
+    );
   });
 
   test('Cambia el estado de favorito al hacer clic en el icono de favorito', () => {
@@ -67,7 +72,9 @@ describe('CharacterCard', () => {
     const favoriteIcon = screen.getByAltText('Favorite icon');
     fireEvent.click(favoriteIcon);
 
-    expect(mockHeroesContext.toggleFavoriteHero).toHaveBeenCalledWith(mockCharacter);
+    expect(mockHeroesContext.toggleFavoriteHero).toHaveBeenCalledWith(
+      mockCharacter
+    );
   });
 
   test('No navega a la página de detalles del personaje al hacer clic en el icono de favorito', () => {
