@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { HeroesContext } from '@context/HeroesContext.jsx';
 import CharacterCard from '@components/CharacterCard/CharacterCard';
 import Searcher from './components/Searcher/Searcher';
+import Loader from '@components/Loader/Loader';
 
 import './index.scss';
 
 function Home() {
-  const { heroes, filterFavoriteHeroes, showFavorites } =
+  const { heroes, filterFavoriteHeroes, showFavorites, loading } =
     useContext(HeroesContext);
   const [searchHero, setSearchHero] = useState('');
 
@@ -30,11 +31,15 @@ function Home() {
           resultsCount={filteredHeroes.length}
         />
       </div>
-      <div className="hero-cards-container">
-        {filteredHeroes.map((hero) => (
-          <CharacterCard key={hero.id} character={hero} />
-        ))}
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="hero-cards-container">
+          {filteredHeroes.map((hero) => (
+            <CharacterCard key={hero.id} character={hero} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
