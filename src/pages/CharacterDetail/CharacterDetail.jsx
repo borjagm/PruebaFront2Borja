@@ -4,13 +4,14 @@ import { HeroesContext } from '@context/HeroesContext.jsx';
 import FavSelected from '@assets/fav-selected.svg';
 import FavUnselected from '@assets/fav-unselected.svg';
 import { Comics } from './components/Comics/Comics';
+import Loader from '@components/Loader/Loader';
 
 import './index.scss';
 
 const CharacterDetail = () => {
   const location = useLocation();
   const { character } = location.state;
-  const { fetchHeroComics, favoriteHeroes, toggleFavoriteHero } =
+  const { fetchHeroComics, favoriteHeroes, toggleFavoriteHero, loading } =
     useContext(HeroesContext);
   const [comics, setComics] = useState([]);
 
@@ -53,7 +54,11 @@ const CharacterDetail = () => {
           </p>
         </div>
       </div>
-      <Comics comics={comics} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Comics comics={comics} />
+      )}
     </div>
   );
 };
